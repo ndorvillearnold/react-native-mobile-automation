@@ -1,3 +1,7 @@
+RUN FILES:
+npm run wdio
+
+
 
 * Run project
 
@@ -12,6 +16,7 @@ npx expo start
 click a for android and
 click i for ios
 
+DETAILED INFO
 
 ✔ Install Expo CLI
 ✔ Install Xcode & CLI Tools
@@ -75,9 +80,163 @@ logged into Apple ID from cloud
 You are not registered as an Apple Developer.  Please visit Apple Developer Registration. https://developer.apple.com/register/
 
 
-✔  Enroll with the Apple Developer app. if you have not registered as an Apple Developer
+✔ Enroll with the Apple Developer app. if you have not registered as an Apple Developer
 
 
 REMINDERS:
 Your app will run on your iPhone without needing an Apple Developer account.
-🚨 Limitations of Expo Go: You cannot test native iOS modules (like push notifications or in-app purchases) in Expo Go.
+🚨 Limitations of Expo Go: You cannot test native iOS modules (like push notifications or in-app purchases) in Expo Go....
+
+
+**************ISSUE with dev************************************************
+
+
+-------------RUN automation steps-------------------------------------------
+
+✔ ADD android for automation you need this command to run
+npx expo prebuild
+
+✔ to add  android: userInterfaceStyle - Expo project supports dark mode/light mode (user interface style),
+If you don’t install it, your app will not automatically adjust to the user’s theme preference.
+npx expo install expo-system-ui
+
+
+X ISSUES installing Detox
+npm install -g detox-cli
+
+I then installed this command since above didnt work for the command line
+✔ npm install --save-dev detox
+
+
+APPIUM 
+I chose to run APPIUM since DETOX was not working
+Commands run for APPIUM below
+
+✔ npm install -g appium
+
+✔ npm install -g appium-doctor
+✔ appium-doctor
+
+
+START APPIUM SERVER
+✔ appium
+
+USE WebdriverIO & JS
+
+Run Tests on an Emulator or Real Device
+
+**** SINCE I HAD so many issues with wdio command just ensure you are in the right project file before running command.
+
+ERROR WAS : 
+✔ npm install --save-dev @wdio/cli
+✔ npx wdio config
+
+
+install appium desktop app
+https://appium.io/
+
+===============================
+🤖 WDIO Configuration Wizard 🧙
+===============================
+
+✔ A project named "loginapp" was detected at "C:\Users\ndorv\repos\react_mobile_automation\LoginApp", correct? yes
+✔ What type of testing would you like to do? E2E Testing - of Web or Mobile Applications
+✔ Where is your automation backend located? On my local machine
+✔ Which environment you would like to automate? Mobile - native, hybrid and mobile web apps, on Android or iOS
+✔ Which mobile environment you'd like to automate? Android - native, hybrid and mobile web apps, tested on emulators and real devices        
+    > using UiAutomator2 (https://www.npmjs.com/package/appium-uiautomator2-driver)
+✔ Which framework do you want to use? Mocha (https://mochajs.org/)
+✔ Do you want to use Typescript to write tests? no
+✔ Do you want WebdriverIO to autogenerate some test files? yes
+✔ What should be the location of your spec files? C:\Users\ndorv\repos\react_mobile_automation\LoginApp\test\specs\**\*.js
+✔ Do you want to use page objects (https://martinfowler.com/bliki/PageObject.html)? yes
+✔ Where are your page objects located? C:\Users\ndorv\repos\react_mobile_automation\LoginApp\test\pageobjects\**\*.js
+✔ Which reporter do you want to use? spec
+✔ Do you want to add a plugin to your test setup?
+✔ Would you like to include Visual Testing to your setup? For more information see https://webdriver.io/docs/visual-testing! no
+✔ Do you want to add a service to your test setup?
+✔ Do you want me to run `npm install` yes
+
+
+ISSUES: errors with appium wdio
+
+I reinstalled JAVA
+https://download.oracle.com/java/17/archive/jdk-17.0.12_windows-x64_bin.exe
+
+
+FAILED: when running wdio with - >>    npx wdio config
+
+INSTALLED APPIUM drivers due to issues with
+appium driver install uiautomator2
+
+
+Then appium was seeing the drivers
+
+I installed plugins since it would not work without it
+appium plugin install images
+appium plugin install execute-driver
+appium plugin install relaxed-caps
+appium plugin install universal-xml
+
+
+The plugin must be explicitly activated when launching the Appium server:
+
+appium --use-plugins=images
+
+
+ENSURE SDK is in the correct path for
+\AppData\Local\Android\Sdk
+
+
+*** REMINDER I should add any appium plugins / extenstions that can help me with this project!***
+
+
+-Start adding page object model ( getters)
+-add code to test file under speacs as thats whats config file will read
+
+note: iF DEVICE UNAUTORIZE Run this command to reset authorization:
+
+adb kill-server
+adb start-server
+adb devices
+
+then you will see below
+
+RF8M730VL4Y     device
+emulator-5554   device
+
+*******************************************************
+IN PATH MY USER - AppData\Local\Android\Sdk\emulator>   i RAN COMMAND BELOW TO GET THE EMULATOR WORKING ( i WILL NEED TO FIND OUT IF THIS IS CORRECT)
+emulator -avd  Pixel_4_API_33
+
+I also may need to remove this Creating WebdriverIO project in C:\Users\ndorv\AppData\Local\Android\Sdk\emulator\wdio.conf.js 
+as its the wrong PATH*******************************************************************************************************************************************************
+
+ad to install  ****npx appium-installer ***** since wdio command would never complete set up and that seem to go further as I got and path I used was below
+\react_mobile_automation\LoginApp>  npx appium-installer
+
+
+ISSUE afer <command> × nightwatch-android-11 AVD not found.
+    × sdkmanager binary not found.
+    Some requirements are missing: avdmanager, nightwatch-android-11
+    × avdmanager binary not present at at SDK path
+
+    THEN got Success! Updated cmdline-tools to the latest version. but need to address above errors if it still dont work
+    Messages I see  while loading that looks like a good sign
+above just for my notes
+
+👋 Hello, Appium user ✨
+Success! Updated cmdline-tools to the latest version.
+
+Installing system-images;android-30;google_apis;x86_64...
+[=======================================] 100% Unzipping... x86_64/data/system/d
+
+Success! system-images;android-30;google_apis;x86_64 installed successfully.
+    ---------------
+
+
+    -------------reminder to add environement variables paths for sdk manager binary
+    C:\Users\yournameAppData\Local\Android\Sdk\cmdline-tools\latest\bin
+
+
+    
