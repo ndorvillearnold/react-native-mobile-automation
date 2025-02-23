@@ -217,9 +217,47 @@ ad to install  ****npx appium-installer ***** since wdio command would never com
 
 
 ISSUE afer <command> × nightwatch-android-11 AVD not found.
+    HOWEVER I founf below in this folder C:\Users\YOUR USER NAME \AppData\Local\Android\Sdk\cmdline-tools\latest\bin>
     × sdkmanager binary not found.
     Some requirements are missing: avdmanager, nightwatch-android-11
     × avdmanager binary not present at at SDK path
+
+
+AFTER running command I see the devices in this path and
+
+c: YOUR USER/AppData\Local\Android\Sdk\cmdline-tools\latest\bin> avdmanager list avd
+
+>>
+Available Android Virtual Devices:
+    Name: nightwatch-android-11
+  Device: pixel_5 (Google)
+    Path: C:\Users\ndorv\.android\avd\nightwatch-android-11.avd
+  Target: Google APIs (Google Inc.)
+          Based on: Android 11.0 ("R") Tag/ABI: google_apis/x86_64
+  Sdcard: 512 MB
+---------
+    Name: Pixel_3a_API_34_extension_level_7_x86_64
+  Device: pixel_3a (Google)
+    Path: C:\Users\ndorv\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd
+  Target: Google APIs (Google Inc.)
+          Based on: Android 14.0 ("UpsideDownCake") Tag/ABI: google_apis/x86_64   
+    Skin: pixel_3a
+  Sdcard: 800M
+Snapshot: no
+---------
+    Name: Pixel_4_API_33
+  Device: pixel_4 (Google)
+    Path: C:\Users\ndorv\.android\avd\Pixel_4_API_33.avd
+  Target: Google Play (Google Inc.)
+          Based on: Android 13.0 ("Tiramisu") Tag/ABI: google_apis_playstore/x86_64
+    Skin: pixel_4
+  Sdcard: 512M
+
+
+
+
+
+    ------------------------------------------------------------------
 
     THEN got Success! Updated cmdline-tools to the latest version. but need to address above errors if it still dont work
     Messages I see  while loading that looks like a good sign

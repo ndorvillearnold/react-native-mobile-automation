@@ -5,6 +5,8 @@ exports.config = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
+    path: '/wd/hub',
+    port: 4723,
     //
     // ==================
     // Specify Test Files
@@ -21,7 +23,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        // ToDo: define location for spec files here
+        './tests/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -50,12 +52,31 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
-        browserName: 'Chrome',
-        'appium:deviceName': 'Android GoogleAPI Emulator',
-        'appium:platformVersion': '12.0',
-        'appium:automationName': 'UiAutomator2'
+        'appium:deviceName': 'nightwatch-android-11',
+        'appium:platformVersion': '11.0',
+        'appium:automationName': 'UiAutomator2',
+        'appium:avd': 'nightwatch-android-11', // Match AVD name
+        'appium:noReset': true,
+        'appium:browserName': 'Chrome'
+    },
+    {
+        platformName: 'Android',
+        'appium:deviceName': 'Pixel_3a_API_34_extension_level_7_x86_64',
+        'appium:platformVersion': '14.0',
+        'appium:automationName': 'UiAutomator2',
+        'appium:avd': 'Pixel_3a_API_34_extension_level_7_x86_64',
+        'appium:noReset': true,
+        'appium:browserName': 'Chrome'
+    },
+    {
+        platformName: 'Android',
+        'appium:deviceName': 'Pixel_4_API_33',
+        'appium:platformVersion': '13.0',
+        'appium:automationName': 'UiAutomator2',
+        'appium:avd': 'Pixel_4_API_33',
+        'appium:noReset': true,
+        'appium:browserName': 'Chrome'
     }],
 
     //
@@ -105,7 +126,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],
+    services: ['appium'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -114,7 +135,7 @@ exports.config = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'mocha',
-    
+
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
@@ -131,7 +152,7 @@ exports.config = {
     reporters: ['spec'],
 
     // Options to be passed to Mocha.
-    // See the full list at http://mochajs.org/
+    // See the full list at http://mochajs.org/git
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
