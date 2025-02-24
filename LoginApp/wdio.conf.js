@@ -23,7 +23,8 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './tests/*.js'
+        // './tests/*.js'
+        './test/specs/**/*.js',
     ],
     // Patterns to exclude.
     exclude: [
@@ -45,39 +46,52 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        platformName: 'Android',
-        'appium:deviceName': 'nightwatch-android-11',
-        'appium:platformVersion': '11.0',
-        'appium:automationName': 'UiAutomator2',
-        'appium:avd': 'nightwatch-android-11', // Match AVD name
-        'appium:noReset': true,
-        'appium:browserName': 'Chrome'
-    },
-    {
-        platformName: 'Android',
-        'appium:deviceName': 'Pixel_3a_API_34_extension_level_7_x86_64',
-        'appium:platformVersion': '14.0',
-        'appium:automationName': 'UiAutomator2',
-        'appium:avd': 'Pixel_3a_API_34_extension_level_7_x86_64',
-        'appium:noReset': true,
-        'appium:browserName': 'Chrome'
-    },
-    {
-        platformName: 'Android',
-        'appium:deviceName': 'Pixel_4_API_33',
-        'appium:platformVersion': '13.0',
-        'appium:automationName': 'UiAutomator2',
-        'appium:avd': 'Pixel_4_API_33',
-        'appium:noReset': true,
-        'appium:browserName': 'Chrome'
-    }],
+    capabilities: [
+        //{
+        //     platformName: 'Android',
+        //     'appium:deviceName': 'nightwatch-android-11',
+        //     'appium:platformVersion': '11.0',
+        //     'appium:automationName': 'UiAutomator2',
+        //     'appium:avd': 'nightwatch-android-11', // Match AVD name
+        //     'appium:noReset': true,
+        //     'appium:browserName': 'Chrome'
+        // },
+        // {
+        // platformName: 'Android',
+        // "appium:deviceName": 'Pixel_3a_API_34_extension_level_7_x86_64',
+        // "appium:platformVersion": '14.0',
+        // "appium:automationName": 'UiAutomator2',
+        // "appium:avd": 'Pixel_3a_API_34_extension_level_7_x86_64',
+        // "appium:noReset": true,
+        // "appium:browserName": 'Chrome',
+        // "appium:chromedriverAutodownload": true // 
+        // },
+        {
+            //physical devices
+            platformName: 'Android',
+            "appium:deviceName": 'RF8M730VL4Y',  //  Match output of `adb devices -l`
+            "appium:platformVersion": '10.0',  // Use `adb shell getprop ro.build.version.release`
+            "appium:automationName": 'UiAutomator2',
+            "appium:browserName": 'Chrome',
+            "appium:chromedriverAutodownload": true, // Auto-download correct Chromedriver
+            "appium:newCommandTimeout": 300
+        }
+        // {
+        //     platformName: 'Android',
+        //     'appium:deviceName': 'Pixel_4_API_33',
+        //     'appium:platformVersion': '13.0',
+        //     'appium:automationName': 'UiAutomator2',
+        //     'appium:avd': 'Pixel_4_API_33',
+        //     'appium:noReset': true,
+        //     'appium:browserName': 'Chrome'
+        // }
+    ],
 
     //
     // ===================
@@ -97,10 +111,10 @@ exports.config = {
     // - @wdio/sumologic-reporter
     // - @wdio/cli, @wdio/config, @wdio/utils
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    // logLevels: {
-    //     webdriver: 'info',
-    //     '@wdio/appium-service': 'info'
-    // },
+    logLevels: {
+        webdriver: 'info',
+        '@wdio/appium-service': 'info'
+    },
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
@@ -110,7 +124,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+    baseUrl: 'http://localhost:8080',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -126,7 +140,8 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium'],
+    services: ['appium', 'chromedriver'],
+
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -171,8 +186,8 @@ exports.config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.

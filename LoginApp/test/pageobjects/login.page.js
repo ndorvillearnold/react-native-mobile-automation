@@ -1,5 +1,6 @@
 // LoginPage.js
-const Page = require('./Page');
+const LoginPage = require('../pageobjects/LoginPage');  // ✅ Correct
+
 
 class LoginPage extends Page {
     open() {
