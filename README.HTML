@@ -1,22 +1,28 @@
-RUN FILES:
+# React Native Mobile Automation Setup  
+
+## 🚀 Running WebdriverIO Tests  
+To execute WebdriverIO tests, run:  
+
 npm run wdio
 
 
 
-* Run project
+*🚀 Runing project
 
---npm run ios
---npm run android
+npm run ios   # Run on iOS  
+npm run android  # Run on Android  
 
 
 
-Start EXPO on devices
+
+*🚀Start EXPO on devices
 npx expo start
 
-click a for android and
-click i for ios
+Press a for Android
+Press i for iOS
 
-DETAILED INFO
+*🚀Install Required Tools
+
 
 ✔ Install Expo CLI
 ✔ Install Xcode & CLI Tools
@@ -42,7 +48,11 @@ If you DONT have a MAC PC do the following to
 
 
 
-
+*🚀Install the Expo Go app from the App Store.
+Connect your iPhone to the same Wi-Fi network as your PC.
+Open Expo Developer Tools in your browser (npx expo start).
+Scan the QR Code using the Expo Go app.
+***Run tests using Detox for automation.(((
 ✔ Install the "Expo Go" app from the App Store.
 ✔ Install the "Expo Go" app from the App Store.
 ✔ Install the "Expo Go" app from the App Store.
@@ -52,8 +62,7 @@ Login to Expo
 
 ✔ eas login
 
-BUILD IOS APP
-
+Build iOS App (Without a Mac)
 ✔  build --platform ios
 
 
@@ -88,7 +97,7 @@ Your app will run on your iPhone without needing an Apple Developer account.
 🚨 Limitations of Expo Go: You cannot test native iOS modules (like push notifications or in-app purchases) in Expo Go....
 
 
-**************ISSUE with dev************************************************
+Belowyou will some Issues I ran into.
 
 
 -------------RUN automation steps-------------------------------------------
@@ -127,7 +136,7 @@ Run Tests on an Emulator or Real Device
 
 **** SINCE I HAD so many issues with wdio command just ensure you are in the right project file before running command.
 
-ERROR WAS : 
+⚠️ERROR WAS : 
 ✔ npm install --save-dev @wdio/cli
 ✔ npx wdio config
 
@@ -135,6 +144,8 @@ ERROR WAS :
 install appium desktop app
 https://appium.io/
 
+
+Follow the Wizard
 ===============================
 🤖 WDIO Configuration Wizard 🧙
 ===============================
@@ -157,7 +168,7 @@ https://appium.io/
 ✔ Do you want to add a service to your test setup?
 ✔ Do you want me to run `npm install` yes
 
-
+⚠️Common Issues and Fixes
 ISSUES: errors with appium wdio
 
 I reinstalled JAVA
@@ -200,7 +211,7 @@ adb kill-server
 adb start-server
 adb devices
 
-then you will see below
+✅ DEVICES USED BELOW
 
 RF8M730VL4Y     device
 emulator-5554   device
